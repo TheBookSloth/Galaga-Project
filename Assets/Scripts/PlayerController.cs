@@ -1,13 +1,20 @@
 using UnityEngine;
 
-public class GalagaMovement : MonoBehaviour
+public class PlayerController: MonoBehaviour
 {
     public float speed = 5;
+    public GameObject bullet;
 
     // Update is called once per frame
     void Update()
     {
         move();
+        
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Instantiate(bullet, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        }    
+    
     }
 
     void move()
@@ -40,4 +47,10 @@ public class GalagaMovement : MonoBehaviour
             transform.Translate(speed * -transform.up * Time.deltaTime);
         }
     }
+
+
+    
+
+
+
 }
