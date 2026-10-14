@@ -165,6 +165,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveSpawner
   enemyWaves:
   - {fileID: 444787201303665605, guid: 9e63590942a93654fa6b9587762f87eb, type: 3}
+  - {fileID: 4789551726068878461, guid: 59f0721596b45b34db33f10f1b24d9cb, type: 3}
   waveTimer: 0
   waveWait: 3
 --- !u!1 &519420028
