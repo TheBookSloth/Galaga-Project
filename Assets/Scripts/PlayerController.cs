@@ -1,9 +1,18 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController: MonoBehaviour
 {
     public float speed = 5;
     public GameObject bullet;
+    public GameObject heartContainer;
+    private int lives;
+    
+    void Start()
+    {
+        lives = heartContainer.transform.childCount;
+    }
 
     // Update is called once per frame
     void Update()
@@ -49,7 +58,24 @@ public class PlayerController: MonoBehaviour
     }
 
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")){
+
+
+            if (lives > 0)
+            {
+                lives -= 1;
+                collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                Destroy(heartContainer.transform.GetChild(heartContainer.transform.childCount - 1).gameObject);
+            }
+
+            if (lives <= 0)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
+    }
 
 
 
