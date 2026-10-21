@@ -707,7 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1176be8c49b15854bb3c098cf553b57b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BackgroundScroller
-  speed: 2
+  speed: 100
+  minHeight: -5
+  loopHeight: 16.1
 --- !u!224 &1541108881 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4822806891311975738, guid: d98be96aac74d88418993e08d4c823a2, type: 3}
