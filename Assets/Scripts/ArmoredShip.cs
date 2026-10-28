@@ -3,18 +3,20 @@ using UnityEngine;
 public class ArmoredShip : MonoBehaviour
 {
 
-    private float speed = 1;
-    private float bulletSpeedMultiplier = 3f;
-    
-    private float maxArmor = 3;
-    private float armorHealth;
+    private float speed = 0.75f;
+    private float bulletSpeedMultiplier = 1.5f; //was 2f
+
+    private bool hasArmor = true;
+
+    private Color armorColor;
 
     public GameObject bullet;
     public GameObject explosion;
 
     void Start()
     {
-        armorHealth = maxArmor;
+        armorColor = new Color(0.2f, 0.7f, 1f);
+        transform.GetComponent<SpriteRenderer>().color = armorColor;
     }
     
     // Update is called once per frame
@@ -41,13 +43,20 @@ public class ArmoredShip : MonoBehaviour
             }
             
             GameObject temp = Instantiate(explosion, transform.position, Quaternion.identity);
+            
+
             Destroy(temp, 1.0f);
+            
 
-            armorHealth--;
 
-            if (armorHealth <= 0)
+            if (hasArmor == false || collision.gameObject.CompareTag("GalagaPlayer"))
             {
                 Destroy(gameObject);
+            }
+            else
+            {
+                transform.GetComponent<SpriteRenderer>().color = Color.white;
+                hasArmor = false;
             }
         }
     }
